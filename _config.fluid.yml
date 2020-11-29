@@ -720,7 +720,7 @@ twikoo:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: /img/bg/archive.png
+  banner_img: /img/bg/archive.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
