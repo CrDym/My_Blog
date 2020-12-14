@@ -723,7 +723,7 @@ archive:
   banner_img: /img/bg/archive.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
-  subtitle: Dream Passionately
+  subtitle: 事常与人违 事总在人为
 
 
 #---------------------------
@@ -735,7 +735,7 @@ category:
   banner_img: /img/bg/category.jpg
   banner_img_height: 80
   banner_mask_alpha: 0.3
-  subtitle:
+  subtitle: 发光不是太阳的权利，每个人都可以
 
   # 单个分类中折叠展示文章数的最大值，超过限制会显示 More
   # The maximum number of posts in a single category. If the limit is exceeded, it will be displayed More
@@ -760,7 +760,7 @@ tag:
   banner_img: /img/bg/tagpage.jpg
   banner_img_height: 80
   banner_mask_alpha: 0.3
-  subtitle:
+  subtitle: 向外张望的人在做梦，向内审视的人才是清醒的
   tagcloud:
     min_font: 15
     max_font: 30
@@ -778,16 +778,15 @@ about:
   banner_img: /img/bg/about.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
-  subtitle:  夜来一笑寒灯下，始是金丹换骨时
-  avatar: /img/avatar.png
+  subtitle:  希望你在认清生活真相之后依然热爱生活
+  avatar: /img/rock.jpeg
   name: RockChe
-  introduce: "夜来一笑寒灯下，始是金丹换骨时"
+  introduce: "不为外撼，不以物移"
   # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
   # More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, The icon is no longer a link, but a hovering QR code
   icons:
     - { class: "iconfont icon-github-fill", link: "https://github.com/CrDym", tip: "GitHub" }
-    - { class: "iconfont icon-douban-fill", link: "https://douban.com", tip: "豆瓣" }
-    - { class: "iconfont icon-wechat-fill", qrcode: "/img/favicon.png" }
+    - { class: "iconfont icon-wechat-fill", qrcode: "/img/WeChat.jpeg" }
 
 
 #---------------------------
@@ -811,14 +810,14 @@ links:
   banner_img: /img/bg/links.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
-  subtitle:
+  subtitle: 如果每天活的左顾右盼，还能谈什么生命的精彩
   # 友链的成员项
   # Member item of page
   items:
     - {
-      title: "Fluid Blog",
-      intro: "主题博客",
-      link: "https://hexo.fluid-dev.com/",
+      title: "DDDDanny",
+      intro: "一个爱折腾的测试工程师",
+      link: "https://www.mintblue.top/",
       image: "/img/favicon.png"
     }
 
