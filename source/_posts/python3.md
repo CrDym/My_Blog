@@ -78,5 +78,133 @@ python 函数的参数传递：
 - 不可变类型：类似 C++ 的值传递，如 整数、字符串、元组。如 fun(a)，传递的只是 a 的值，没有影响 a 对象本身。如果在 fun(a)）内部修改 a 的值，则是新生成来一个 a。
 - 可变类型：类似 C++ 的引用传递，如 列表，字典。如 fun(la)，则是将 la 真正的传过去，修改后 fun 外部的 la 也会受影响
 python中一切皆是对象，严格意义我们不能说值传递还是引用传递，我们应该说传不可变对象和传可变对象。
-### 传不可变对象实例
-未完待续------
+
+## 参数
+### 必须参数
+必需参数须以正确的顺序传入函数。调用时的数量必须和声明时的一样
+例如：调用printme()函数时，你必须传入一个参数，不然会出现语法错误
+
+```python
+def printme( str ):
+   "打印任何传入的字符串"
+   print (str)
+   return
+ 
+# 调用 printme 函数，不加参数会报错
+printme()
+```
+
+以上代码的输出结果：
+> Traceback (most recent call last):
+  File "test.py", line 10, in <module>
+    printme()
+TypeError: printme() missing 1 required positional argument: 'str'
+### 关键字参数
+关键字参数和函数调用关系紧密，函数调用使用关键字参数来确定传入的参数值。
+
+使用关键字参数允许函数调用时参数的顺序与声明时不一致，因为 Python 解释器能够用参数名匹配参数值。
+以下实例在函数 printme() 调用时使用参数名：
+
+```python
+def printme( str ):
+   "打印任何传入的字符串"
+   print (str)
+   return
+ 
+#调用printme函数
+printme( str = "python")
+```
+以下实例中演示了函数参数的使用不需要使用指定顺序：
+
+```python
+def printinfo( name, age ):
+   "打印任何传入的字符串"
+   print ("名字: ", name)
+   print ("年龄: ", age)
+   return
+ 
+#调用printinfo函数
+printinfo( age=28, name="python" )
+
+```
+
+以上代码输出结果：
+
+> 名字： python
+> 年龄： 25
+### 默认参数
+调用函数时，如果没有传递参数，则会使用默认参数。以下实例中如果没有传入 age 参数，则使用默认值：
+
+
+```python
+def printinfo( name, age = 35 ):
+   "打印任何传入的字符串"
+   print ("名字: ", name)
+   print ("年龄: ", age)
+   return
+ 
+#调用printinfo函数
+printinfo( age=28, name="python" )
+print ("------------------------")
+printinfo( name="python" )
+```
+### 不定长参数
+你可能需要一个函数能处理比当初声明时更多的参数。这些参数叫做不定长参数，和上述 2 种参数不同，声明时不会命名。
+加了星号 * 的参数会以元组(tuple)的形式导入，存放所有未命名的变量参数。
+
+```python
+def printinfo( arg1, *vartuple ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vartuple)
+ 
+# 调用printinfo 函数
+printinfo( 70, 60, 50 )
+```
+
+> 输出：
+> 70
+> （60，50）
+
+如果在函数调用时没有指定参数，它就是一个空元组。我们也可以不向函数传递未命名的变量。如下实例：
+
+```python
+def printinfo( arg1, *vartuple ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   for var in vartuple:
+      print (var)
+   return
+ 
+# 调用printinfo 函数
+printinfo( 10 )
+printinfo( 70, 60, 50 )
+```
+
+> 输出:
+> 10
+> 输出:
+> 70
+> 60
+> 50
+
+还有一种就是参数带两个星号
+加了两个星号**的参数会以字典的形式导入
+
+
+```python
+def printinfo( arg1, **vardict ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vardict)
+ 
+# 调用printinfo 函数
+printinfo(1, a=2,b=3)
+```
+
+输出结果：
+> 1
+> {'a': 2, 'b': 3}
