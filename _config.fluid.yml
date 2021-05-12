@@ -350,7 +350,7 @@ footer:
     <div style="padding-top: 10px;font-size: 90%; color: #8d8d8d; font-weight: bolder;">
        Copyright
        &copy;
-       2020
+       2021
        <a href="https://github.com/CrDym" target="_blank">Rock</a>
          All Right Reserved.
      </div>
@@ -369,8 +369,8 @@ footer:
   # 展示网站的 PV、UV 统计数
   # Display website PV and UV statistics
   statistics:
-    enable: false
-#    enable: true
+#    enable: false
+    enable: true
 
     # 统计数据来源，如果使用 leancloud 需要设置 `web_analytics: leancloud` 中的参数；如果使用 busuanzi 可能会有请求失败的情况
     # Data source. If use leancloud, you need to set the parameter in `web_analytics: leancloud`
