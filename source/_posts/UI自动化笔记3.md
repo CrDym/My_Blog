@@ -136,8 +136,8 @@ ifame或frame只有在主目录才有相关元素信息，不会到主目录，�
   - driver.get_screenshot_as_file(imgepath)
 - 参数
   - imagepath：为图片要保存的目录地址及文件名称
-    如： 当前目录 ./test.png
-    	    上一级目录 ../test.png
+    当前目录 ./test.png
+    上一级目录 ../test.png
 
 - 扩展
   - 多条用例执行失败，会产生多张图片，可以采用时间戳的形式，进去区分。
