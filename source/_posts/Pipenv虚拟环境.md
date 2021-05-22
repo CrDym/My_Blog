@@ -97,12 +97,12 @@ $ pipenv install --python 2.7.14
 pipenv 会自动扫描系统寻找合适的版本信息，如果找不到的话，同时又安装了 pyenv 的话，则会自动调用 pyenv 下载对应版本的 python， 否则会报错。
 
 这时候在当前项目根目录下会生成 Pipfile 和 Pipfile.lock 两个环境初始化文件
-# 进入|退出环境
-## 进入环境
+## 进入|退出环境
+ 进入环境
 `pipenv shell`
-## 退出环境
+ 退出环境
 `exit`
-# 安装第三方包
+## 安装第三方包
 测试安装 selenium 包
 
 `pipenv install selenium`
