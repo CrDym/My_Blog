@@ -1,7 +1,7 @@
 ---
 title: Pytest学习笔记
 date: 2021-06-16  20:12
-tags: Pyttest
+tags: Pytest
 categories: Python学习
 ---
 
