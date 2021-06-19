@@ -1,5 +1,5 @@
 ---
-title: Pytest学习笔记
+title: Pytest笔记1-快速入门
 date: 2021-06-16  20:12
 tags: Pytest
 categories: Python学习
@@ -244,13 +244,33 @@ class TestClass:
 
 可以看到先执行了2条失败的用例，然后执行了2条成功的用例
 
+### 9.-x
+
+遇到错误时停止测试
+
+![image-20210619154608871](https://img.rockche.cn//image-20210619154608871.png)
+
+可以看到，本来有4条用例，但是在第2条用例失败后，就没有继续往下执行了
+
+### 10.--maxfail=num
+
+当用例错误个数达到指定数量时，停止测试
+
+我们执行命令 `pytest --maxfail=1` 
+
+![image-20210619155039322](https://img.rockche.cn//image-20210619155039322.png)
+
+可以看到，本来有4条用例，但是在第2条用例失败后，就没有继续往下执行了
+
+
+
 
 
 以上就是命令行运行测试用例时经常使用到的参数，这些参数不仅可以单独使用，也可以组合一起使用，可以使用`--help`来查看更多命令的帮助信息
 
 
 
-## Pytest收集测试用例的规则
+## Pytest收集用例规则
 
 - 从一个或者多个目录开始查找，你可以在命令行指定文件或者目录，如果未指定那么从当前目录开始收集用例
 - 在该目录和所有子目录下递归查找测试模块
@@ -338,5 +358,174 @@ def func():
 
 ![image-20210617160637211](https://img.rockche.cn/mweb/image-20210617160637211.png)
 
-只有test_01.py被识别为测试模块
+可以看到，只有test_01.py被识别为测试模块
+
+## pytest执行用例规则
+
+### 规则验证
+
+按照如下目录结构新建项目
+
+![image-20210619151855179](https://img.rockche.cn//image-20210619151855179.png)
+
+代码如下：
+
+test_01.py
+
+```python
+# 测试函数
+def test_func1():
+    assert 1 == 1
+
+# 普通函数
+def func1():
+    assert 1 == 1
+```
+
+test_02.py
+
+```python
+# 测试类
+class TestClass1(object):
+    # 测试函数
+    def test_func2(self):
+        assert 1 == 1
+
+    # 普通函数
+    def func2(self):
+        assert 1 == 1
+```
+
+case01.py
+
+```python
+# 测试函数
+def test_func5():
+    assert 1 == 1
+
+# 普通函数
+def func5():
+    assert 1 == 1
+```
+
+test_03.py
+
+```python
+# 测试类
+class TestClass2(object):
+
+    # 测试函数
+    def test_func3(self):
+        assert 1 == 1
+
+    # 普通函数
+    def func3(self):
+        assert 1 == 1
+
+
+# 测试函数
+def test_func4():
+    assert 1 == 1
+
+
+# 普通函数
+def func4():
+    assert 1 == 1
+```
+
+case_02.py
+
+```python
+# 测试方法
+def test_func8():
+    assert 1 == 1
+
+
+# 普通方法
+def func8():
+    assert 1 == 1
+```
+
+04_test.py
+
+```python
+# 测试方法
+def test_func6():
+    assert 1 == 1
+
+
+# 普通方法
+def func6():
+    assert 1 == 1
+
+
+# 测试类
+class TestClass(object):
+    # 测试方法
+    def test_func7(self):
+        assert 1 == 1
+
+    # 普通方法
+    def func7(self):
+        assert 1 == 1
+```
+
+在项目根目录下执行`pytest -v`,结果如下：
+
+![image-20210619151727755](https://img.rockche.cn//image-20210619151727755.png)
+
+可以看到一共有执行了6条用例，但是我们实际上写了不止6条用例，通过观察，会发现这样一个规律：
+
+*Pytest会从我们当前的目录开始遍历查找所有目录，查找以test_开头或_test结尾的文件，在这些文件中找到以test开头的函数和以Test开头的类和类里面以test开头的函数做为测试用例*
+
+## Pytest运行指定测试用例
+
+### 运行指定目录下的所有用例
+
+使用命令 `pytest -v Case01`运行 Case01目录下的用例, 结果如下
+
+![image-20210619152748193](https://img.rockche.cn//image-20210619152748193.png)
+
+
+
+### 运行指定文件中的所有用例
+
+使用命令 `pytest -v Case01/test_01.py `运行Case01中的test_01.py文件中的测试用例，结果如下
+
+![image-20210619152959577](https://img.rockche.cn//image-20210619152959577.png)
+
+### 运行指定文件中的测试类
+
+使用命令 `pytest -v Case02/test_03.py::TestClass2 `运行Case02中的test_03.py文件中的测试类Testclass2，结果如下
+
+![image-20210619153221417](https://img.rockche.cn//image-20210619153221417.png)
+
+### 运行指定的测试用例函数
+
+使用命令 `pytest -v Case02/test_03.py::test_func4`运行Case02中的test_03.py文件中的test_func4函数，结果如下
+
+![image-20210619153522347](https://img.rockche.cn//image-20210619153522347.png)
+
+## 总结
+
+### 收集用例规则
+
+搜索所有以test_开头的测试文件，以Test开头的测试类，以test_开头的测试函数
+
+### 执行用例规则
+
+- 运行指定的目录下用例
+  -  使用命令 `pytest 目录/目录`
+
+- 运行指定文件
+  - 使用命令  `pytest 目录/文件`
+
+- 运行指定类或者函数 
+  - 使用命令  `pytest 目录/文件::类名::函数名 或者 pytest 目录/文件::函数名`
+
+## 参考链接
+
+[linux超](https://www.cnblogs.com/linuxchao/)
+
+[上海悠悠](https://www.cnblogs.com/yoyoketang)
 
