@@ -1,5 +1,5 @@
 ---
-title: Pytest笔记1-快速入门
+title: Pytest1-快速入门
 date: 2021-06-16  20:12
 tags: Pytest
 categories: Python学习
