@@ -1,6 +1,6 @@
 ---
 title: Selenium系列2-搭建测试环境
-date: 2021-09-10  22:28
+date: 2021-09-09  22:28
 tags: UI自动化
 categories: 自动化测试
 ---
